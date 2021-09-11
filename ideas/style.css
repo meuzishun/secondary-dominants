@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+
+.buttons {
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.major-tonics,
+.minor-tonics {
+	display: grid;
+}
+
+.button {
+	font-size: 40px;
+}
+
+sup {
+	font-size: 25px;
+}

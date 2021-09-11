@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    font-size: 16px;
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        
+        .wrapper {
+            width: 900px;
+            margin: 0 auto;
+            
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 3rem;
+                gap: 2rem;
+                
+                h1 {
+                    font-size: 3rem;
+                }
+                
+                p {
+                    font-size: 1.3rem;
+                }
+            }
+            
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .questions {
+                    width: 90%;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    h2 {
+                        text-align: center;
+                    }
+
+                    .settings {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        gap: 3rem;
+
+                        .major-options-container, .minor-options-container {
+                            display: flex;
+                            flex-direction: column;
+
+                            .checkbox-container {
+
+                                label {
+                                    font-size: 1.5rem;
+                                }
+                            }
+                        }
+
+                        .resolved-unresolved {}
+                    }
+
+                    
+                }
+
+                .feedback {
+                    font-size: 4rem;
+                    text-align: center;
+                }
+
+                .answer-buttons {
+                    margin: 2rem;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+
+                    .major-answer-buttons, .minor-answer-buttons {
+                        display: flex;
+                        justify-content: space-between;
+                        button {
+                            font-size: 2rem;
+                            padding: 1rem;
+                        }
+                    }
+                }
+
+                
+            }
+            .random-chord {
+                font-size: 1.5rem;
+                padding: 2rem;
+
+            }
+
+            footer {}
+        }
+    }
+}
