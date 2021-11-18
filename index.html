@@ -9,16 +9,16 @@
 </head>
 <body>
     <div class="wrapper">
-        <header>
+        <!-- <header>
             <h1>Secondary Dominants</h1>
             <p>explanation about secondary dominants and this exercise</p>
             <p>instructions for how to operate the application</p>
-        </header>
+        </header> -->
         <main>
             <div class="questions">
                 <h2>Settings</h2>
                 <div class="settings">
-                    <div class="major-options-container">
+                    <div class="options-container major-options-container">
                         <h3>Major</h3>
                         <div class="checkbox-container">
                             <input type="checkbox" name="" class="chord-option" id="major-V7/V">
@@ -36,12 +36,12 @@
                             <input type="checkbox" name="" class="chord-option" id="major-V7/ii">
                             <label for="major-V7/ii">V<sup>7</sup>/ii</label>
                         </div>
-                        <!-- <div class="checkbox-container">
+                        <div class="checkbox-container">
                             <input type="checkbox" name="" class="chord-option" id="major-V7/iii" data-file-path="">
                             <label for="major-V7/iii">V7/iii</label>
-                        </div> -->
+                        </div>
                     </div>
-                    <div class="minor-options-container">
+                    <div class="options-container minor-options-container">
                         <h3>Minor</h3>
                         <div class="checkbox-container">
                             <input type="checkbox" name="" class="chord-option" id="minor-V7/III">
@@ -59,23 +59,43 @@
                             <input type="checkbox" name="" class="chord-option" id="minor-V7/VI">
                             <label for="minor-V7/VI">V<sup>7</sup>/VI</label>
                         </div>
-                        <!-- <div class="checkbox-container">
-                            <input type="checkbox" name="" class="chord-option" id="minor-V7/VIII">
+                        <div class="checkbox-container">
+                            <input type="checkbox" name="" class="chord-option" id="minor-V7/VII">
                             <label for="minor-V7/VII">V7/VII</label>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="mode-reminder">
                         <input type="checkbox" name="" id="mode" checked>
                         <label for="mode">Show Mode</label>
                     </div>
                     <div class="resolved-unresolved">
-                        <input type="checkbox" name="" id="resolved">
+                        <input type="checkbox" name="" id="resolved" checked>
                         <label for="resolved">Resolved</label>
                     </div>
+                    <div class="key">
+                        <label for="key">Key: </label>
+                        <select name="key" id="key">
+                            <option value="random">random</option>
+                            <option value="A">A</option>
+                            <option value="Ab">Ab</option>
+                            <option value="B">B</option>
+                            <option value="Bb">Bb</option>
+                            <option value="C" selected>C</option>
+                            <option value="Db">Db</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="Eb">Eb</option>
+                            <option value="F">F</option>
+                            <option value="Gb">Gb</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
                 </div>
-                
             </div>
-            <div class="feedback"></div>
+            <div class="control-btns">
+                <button class="random-chord-btn">Click to hear a random chord</button>
+                <button class="replay-btn">Hear Again</button>
+            </div>
             <div class="answer-buttons">
                 <div class="major-answer-buttons">
                     <h4>Major:</h4>
@@ -83,28 +103,19 @@
                     <button class="ofIV">V<sup>7</sup>/IV</button>
                     <button class="ofvi">V<sup>7</sup>/vi</button>
                     <button class="ofii">V<sup>7</sup>/ii</button>
-                    <!-- <button class="ofiii">V<sup>7</sup>/iii</button> -->
+                    <button class="ofiii">V<sup>7</sup>/iii</button>
                 </div>
-                <!-- <div class="major-audio-container">
-                    <audio src="audio/ofV.mp3" class="ofV"></audio>
-                    <audio src="audio/ofIV.mp3" class="ofIV"></audio>
-                    <audio src="audio/ofvi.mp3" class="ofvi"></audio>
-                    <audio src="audio/ofii.mp3" class="ofii"></audio>
-                    <audio src="audio/ofiii.mp3" class="ofiii"></audio>
-                </div> -->
                 <div class="minor-answer-buttons">
                     <h4>Minor:</h4>
                     <button class="ofIII">V<sup>7</sup>/III</button>
                     <button class="ofV">V<sup>7</sup>/V</button>
                     <button class="ofiv">V<sup>7</sup>/iv</button>
                     <button class="ofVI">V<sup>7</sup>/VI</button>
-                    <!-- <button class="ofVII">V<sup>7</sup>/VII</button> -->
+                    <button class="ofVII">V<sup>7</sup>/VII</button>
                 </div>
             </div>
-            
-            <button class="random-chord">Click to hear a random chord</button>
+            <div class="feedback"></div>
         </main>
-        <footer></footer>
     </div>
 </body>
 </html>

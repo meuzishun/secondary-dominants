@@ -1,8 +1,10 @@
 const audioCtx = new AudioContext();
-const playRandomBtn = document.querySelector('.random-chord');
+const playRandomBtn = document.querySelector('.random-chord-btn');
+const replayBtn = document.querySelector('.replay-btn');
 const optionBoxes = [...document.querySelectorAll('.chord-option')];
+const keyDropdown = document.querySelector('#key');
 const chordBtns = [...document.querySelectorAll('.answer-buttons button')];
-console.log(chordBtns);
+let currentAudio;
 let currentAnswer;
 const feedbackText = document.querySelector('.feedback');
 const modeShowBtn = document.querySelector('#mode');
@@ -13,13 +15,11 @@ function loadChoices() {
         alert(`Please select at least one option`);
         return;
     }
-    console.log(choices);
     return choices;
 }
 
 function pickRandomChoice(choices) {
-    const randomIndex = Math.floor(Math.random() * (choices.length + 1));
-    console.log(randomIndex);
+    const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];
 }
 
@@ -34,10 +34,22 @@ function getResolvedStatus() {
     return resolvedBox.checked;
 }
 
+function capitalize(text) {
+    const arr = text.split('');
+    arr[0] = arr[0].toUpperCase();
+    return arr.join('');
+}
+
+function randomKey() {
+    const keys = ['A', 'Ab', 'B', 'Bb', 'C', 'Db', 'D', 'E', 'Eb', 'F', 'Gb', 'G'];
+    const randomIndex = Math.floor(Math.random() * keys.length);
+    return keys[randomIndex];
+}
+
 function findAudioFile(info, resolved) {
     const [mode, chord] = info;
     if (modeShowBtn.checked) {
-        feedback(mode);
+        feedback(capitalize(mode));
         let displayTimer = setTimeout(() => {
             let para = feedbackText.firstChild;
             feedbackText.removeChild(para);
@@ -46,7 +58,10 @@ function findAudioFile(info, resolved) {
     }
     const chordInfoSplit = chord.split('/');
     const tonic = chordInfoSplit[1];
-    const filePath = `audio/${resolved ? 'resolved' : 'alone'}/${mode}/${tonic}.mp3`;
+    const key = keyDropdown.value;
+
+    const filePath = `audio/${resolved ? 'resolved' : 'alone'}/${mode}/${tonic}_${key === 'random' ? randomKey() : key}.mp3`;
+    //TODO Something about naming the audio files with '#' at the end?  For now changed to all flats for accidentals
     return filePath;
 }
 
@@ -74,10 +89,18 @@ function playRandomAudio() {
     const choice = pickRandomChoice(choices);
     const info = processRandomChoice(choice);
     currentAnswer = info.join('-');
+    // console.log(currentAnswer);
     const resolved = getResolvedStatus();
-    const audioFile = findAudioFile(info, resolved);
-    console.log(audioFile);
-    setupSample(audioFile).then((sample) => {
+    // const audioFile = findAudioFile(info, resolved);
+    currentAudio = findAudioFile(info, resolved);
+    console.log(currentAudio);
+    setupSample(currentAudio).then((sample) => {
+        playSample(sample);
+    });
+}
+
+function replayAudio() {
+    setupSample(currentAudio).then((sample) => {
         playSample(sample);
     });
 }
@@ -114,6 +137,7 @@ function processGuess(evt) {
 }
 
 playRandomBtn.addEventListener('click', playRandomAudio);
+replayBtn.addEventListener('click', replayAudio);
 
 chordBtns.forEach(btn => btn.addEventListener('click', processGuess));
 
